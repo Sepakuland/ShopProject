@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    @{
+        List<Product.Demo.Product> list = ViewBag.data as List<Product.Demo.Product>;
+
+    }
+    <div class="container">
+        <h2>لیست محصولات</h2>
+        <p>اطلاعات کلی محصولات</p>
+        <a class="btn btn-success" href="create">ایجاد ردیف جدید</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>نام</th>
+                    <th>فیمت</th>
+                    <th>نام کتگوری</th>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in list)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Price</td>
+                        <td>@item.Category</td>
+                        <td><a href="edit/@item.ProductId" class="btn btn-warning">ویرایش</a>|<a href="delete/@item.ProductId" class="btn btn-danger">حذف</a></td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
+
